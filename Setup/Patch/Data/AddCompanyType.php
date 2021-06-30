@@ -53,7 +53,7 @@ class AddCompanyType implements DataPatchInterface
             'label' => 'Company Type',
             'required' => true,
             'visible' => true,
-            'source' => \AHT\AttributeCustomer\Model\Custom\Company\Type\PhoneNumber::class,
+            'source' => \AHT\AttributeCustomer\Model\Custom\Company\Type\CompanyType::class,
             'user_defined' => true,
             'system' => false,
             'is_visible_in_grid' => true,
