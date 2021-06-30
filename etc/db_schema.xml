@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="information_customer" resource="default" engine="innodb" comment="Customer Organization">
+        <column xsi:type="int" name="entity_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity ID"/>
+        <column xsi:type="text" name="organization_name" length="50" nullable="false" identity="false" comment="Organization Name"/>
+        <column xsi:type="text" name="phone_contact" length="150" unsigned="true" nullable="false" identity="false" comment="Phone Number And Country Code"/>
+        <column xsi:type="int" name="company_type" padding="5" nullable="false" identity="false" comment="Company Type"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+    </table>
+</schema>
