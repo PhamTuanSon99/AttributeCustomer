@@ -1,7 +1,7 @@
 <?php
 namespace AHT\AttributeCustomer\Model\Custom\Company\Type;
 
-class PhoneNumber extends \Magento\Eav\Model\Entity\Attribute\Source\AbstractSource
+class CompanyType extends \Magento\Eav\Model\Entity\Attribute\Source\AbstractSource
 {
     public function getAllOptions() {
         if ($this->_options === null) {

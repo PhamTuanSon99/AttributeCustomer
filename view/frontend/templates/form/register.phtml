@@ -169,7 +169,6 @@ $country_code = $helper->getphonecode();
                     </div>
                 </div>
             </div>
-
         </div>
         <div class="field confirmation required">
             <label for="password-confirmation" class="label"><span><?= $block->escapeHtml(__('Confirm Password')) ?></span></label>
@@ -182,20 +181,20 @@ $country_code = $helper->getphonecode();
     <fieldset class="fieldset create company" data-hasrequired="<?= $block->escapeHtmlAttr(__('* Required Fields')) ?>">
         <legend class="legend"><span><?= $block->escapeHtml(__('Company Information')) ?></span></legend><br>
         <div class="field required">
-            <label for="phone_number" class="label"><span><?= $block->escapeHtml(__('Phone Number')) ?></span></label>
+            <label for="contact_phonenumber" class="label"><span><?= $block->escapeHtml(__('Phone Number')) ?></span></label>
             <div class="control" style="display: flex;">
-                <select style="flex: 20%;">
+                <select id="country_selector" style="flex: 20%;">
                     <?php foreach ($country_code as $key => $value) { ?>
                         <option value="<?= $value ?>"><?= $key . " (+" . $value . ")" ?></option>
                     <?php } ?>
                 </select>
-                <input type="number" name="contact_phonenumber" autocomplete="contact_phonenumber" id="contact_phonenumber" title="<?= $block->escapeHtmlAttr(__('contact_phonenumber')) ?>" class="input-text" data-mage-init='{"mage/trim-input":{}}' data-validate="{required:true}">
+                <input type="number" name="contact_phonenumber" autocomplete="off" id="contact_phonenumber" title="<?= $block->escapeHtmlAttr(__('contact_phonenumber')) ?>" class="input-text" data-validate="{required:true}">
             </div>
         </div>
         <div class="field company required">
             <label for="company_type" class="label"><span><?= $block->escapeHtml(__('Company Type')) ?></span></label>
             <div class="control">
-                <select id="company_type" data-mage-init='{"mage/trim-input":{}}'>
+                <select id="company_type">
                     <option selected><?= $block->escapeHtml(__('Please select')) ?></option>
                     <option value="1"><?= $block->escapeHtml(__('CBD Manufacturer')) ?></option>
                     <option value="2"><?= $block->escapeHtml(__('CBD Brand and Marketing company')) ?></option>
@@ -207,7 +206,7 @@ $country_code = $helper->getphonecode();
         <div class="field confirmation required" id="organization_name">
             <label for="organization_name" class="label"><span><?= $block->escapeHtml(__('Organization Name')) ?></span></label>
             <div class="control">
-                <input type="text" name="organization_name" title="<?= $block->escapeHtmlAttr(__('organization_name')) ?>" data-mage-init='{"mage/trim-input":{}}' class="input-text" data-validate="{required:true}" autocomplete="off">
+                <input type="text" name="organization_name" title="<?= $block->escapeHtmlAttr(__('organization_name')) ?>" class="input-text" data-validate="{required:true}" autocomplete="off">
             </div>
         </div>
         <?= $block->getChildHtml('form_additional_info') ?>
@@ -258,6 +257,10 @@ $country_code = $helper->getphonecode();
                 } else {
                     $('#organization_name').hide();
                 }
+            });
+
+            $('#country_selector').change(function() {
+                $('#contact_phonenumber').val($('#country_selector').val());
             });
         });
 
